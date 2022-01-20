@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd"></mule>
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="74c8dd50-343c-4c0d-83eb-c663495f1844" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="doctus-githubFlow" doc:id="4b3d4466-9acd-4700-a61e-7303d3941bf4" >
+		<http:listener doc:name="Listener" doc:id="014e399d-4af3-40a3-b9c3-bb200b402ba5" config-ref="HTTP_Listener_config" path="/githubdemo"/>
+		<logger level="INFO" doc:name="Logger" doc:id="55f2540c-87ae-4e37-8a50-c2ee66eee4fa" message="testGithubdemo"/>
+	</flow>
+</mule>
